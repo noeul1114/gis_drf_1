@@ -14,6 +14,13 @@
     <h1>{{ new_model.text }}</h1>
     <p>{{ new_model.created_at }}</p>
 
+    <div>
+        {% for new_model in new_model_list %}
+            <h5>{{ new_model.text }}</h5>
+            <p>{{ new_model.created_at }}</p>
+        {% endfor %}
+    </div>
+
 </div>
 
 

@@ -14,6 +14,11 @@ def hello_world(request):
         new_model.text = input_data
         new_model.save()
 
-        return render(request, 'accountapp/hello_world.html', context={'new_model': new_model})
+        new_model_list = NewModel.objects.all()
+        return render(request, 'accountapp/hello_world.html',
+                      context={'new_model': new_model,
+                               'new_model_list': new_model_list})
 
-    return render(request, 'accountapp/hello_world.html')
+    new_model_list = NewModel.objects.all()
+    return render(request, 'accountapp/hello_world.html',
+                  context={'new_model_list': new_model_list})
