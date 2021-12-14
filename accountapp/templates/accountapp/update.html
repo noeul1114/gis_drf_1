@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+  <div>
+
+    <div class="my-5">
+      <h3>Update Account</h3>
+    </div>
+
+    <div>
+      <form action="{% url 'accountapp:update' pk=target_user.pk %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" class="btn btn-dark rounded-pill px-5">
+      </form>
+    </div>
+
+  </div>
+
+
+{% endblock %}
