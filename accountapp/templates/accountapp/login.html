@@ -1,13 +1,18 @@
 {% extends 'base.html' %}
+{% load bootstrap5 %}
 
 {% block content %}
 
 
-  <div>
+  <div class="my-5" style="max-width: 600px; margin: auto;">
+
+    <div class="my-5">
+      <h2>Login</h2>
+    </div>
 
     <form action="{% url 'accountapp:login' %}" method="post">
       {% csrf_token %}
-      {{ form }}
+      {% bootstrap_form form %}
       <input type="submit" class="btn btn-dark rounded-pill px-5">
     </form>
 
