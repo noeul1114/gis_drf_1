@@ -38,9 +38,14 @@ class Profile(models.Model):
             # 이미지 프로세싱 결과물을 임시저장해놓을 메모리를 할당
             output = BytesIO()
 
+            # 이미지 사이즈를 확인하고 비율을 계싼
+            width, height = img.size
+            ratio = height / width
+            pixel = 250
+
             # 원하는 이미지 사이즈로 이미지를 변형
             img = img.convert('RGB')
-            img = img.resize((200, 200), Image.ANTIALIAS)
+            img.thumbnail((pixel, round(pixel * ratio)))
 
             # 이미지를 이전에 만든 메모리 공간에 저장
             img.save(output, format='JPEG', quality=95)
