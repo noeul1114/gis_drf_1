@@ -10,7 +10,8 @@
       <h2>Create Article</h2>
     </div>
 
-    <form action="{% url 'articleapp:create' %}" method="post">
+    <form action="{% url 'articleapp:create' %}" method="post"
+          enctype="multipart/form-data">
       {% csrf_token %}
       {% bootstrap_form form %}
       <input type="submit" class="btn btn-dark rounded-pill px-5">
