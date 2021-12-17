@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+  <div style="max-width: 400px; margin: auto;">
+    <div class="my-5">
+
+      <h1>{{ target_article.title }}</h1>
+      <h4>{{ target_article.created_at }}</h4>
+
+      {% if target_article.image %}
+      <img style="border-radius: 2rem; width: 100%"
+           src="{{ target_article.image.url }}" alt="">
+      {% endif %}
+
+    </div>
+
+    <div>
+
+      {{ target_article.content | safe }}
+
+    </div>
+
+  </div>
+
+
+{% endblock %}
