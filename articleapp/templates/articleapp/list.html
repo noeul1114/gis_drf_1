@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <style>
+    .container div {
+      width: 180px;
+      background-color: antiquewhite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+    }
+  </style>
+
+  <div class="container" style="max-width: 900px; margin: auto; padding: 0;">
+    {% for article in article_list %}
+      <div>
+        <a href="{% url 'articleapp:detail' pk=article.pk %}">
+          <img style="width: 100%; border-radius: 1rem;"
+               src="{{ article.image.url }}"
+               alt="">
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+
+  <script src="{% static 'articleapp/js/magic_grid.js' %}"></script>
+  <script>
+      let magicGrid = new MagicGrid({
+        container: '.container',
+        animate: true,
+        gutter: 20,
+        static: true,
+        useMin: true
+      });
+
+      magicGrid.listen();
+  </script>
+
+{% endblock %}

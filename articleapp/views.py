@@ -4,7 +4,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.urls import reverse_lazy, reverse
 from django.utils.decorators import method_decorator
-from django.views.generic import CreateView, DetailView, UpdateView, DeleteView, TemplateView
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView, TemplateView, ListView
 
 from articleapp.decorators import article_ownership_required
 from articleapp.forms import ArticleCreationForm
@@ -52,5 +52,8 @@ class ArticleDeleteView(DeleteView):
     template_name = 'articleapp/delete.html'
 
 
-class MagicGridTemplateView(TemplateView):
-    template_name = 'articleapp/magic_grid.html'
+class ArticleListView(ListView):
+    model = Article
+    context_object_name = 'article_list'
+    template_name = 'articleapp/list.html'
+    paginate_by = 2
