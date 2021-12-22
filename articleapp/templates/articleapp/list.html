@@ -26,6 +26,25 @@
     {% endfor %}
   </div>
 
+  <div>
+    {% if page_obj.has_previous %}
+    <a href="?page={{ page_obj.previous_page_number }}"
+       class="btn btn-secondary rounded-pill px-2">
+      {{ page_obj.previous_page_number }}
+    </a>
+    {% endif %}
+    <a href="#"
+       class="btn btn-dark rounded-pill px-2">
+      {{ page_obj.number }}
+    </a>
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}"
+       class="btn btn-secondary rounded-pill px-2">
+      {{ page_obj.next_page_number }}
+    </a>
+    {% endif %}
+  </div>
+
   <script src="{% static 'articleapp/js/magic_grid.js' %}"></script>
   <script>
       let magicGrid = new MagicGrid({
